@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palindrome Checker</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        margin: 50px auto;
+        text-align: center;
+    }
+
+
+
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+
+
+
+
+
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Palindrome Checker</h2>
+    <input type="text" id="inputString" placeholder="Enter a string">
+    <button onclick="checkPalindrome()">Check</button>
+    <p id="result"></p>
+</div>
+
+<!-- <p>hhhhhhhhhhh</p> -->
+<div class="container">
+    <h2>Find Minimum and Maximum Numbers</h2>
+    <label for="numbers">Enter numbers separated by commas:</label>
+    <input type="text" id="numbers" placeholder="e.g., 1, 2, 3, 4, 5">
+    <button onclick="findMinMax()">Find</button>
+    <p id="result"></p>
+</div>
+
+
+<!-- <p>mmmmmmm</p> -->
+
+
+<div class="container">
+    <h2>Missing Number Finder</h2>
+    <p>The missing number is: <span id="missingNumber"></span></p>
+</div>
+
+
+<script>
+function isPalindrome(str) {
+    str = str.toLowerCase();
+    str = str.replace(/[^a-z0-9]/g, '');
+    for (let i = 0; i < Math.floor(str.length / 2); i++) {
+        if (str[i] !== str[str.length - 1 - i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function checkPalindrome() {
+    const inputString = document.getElementById('inputString').value;
+    const resultElement = document.getElementById('result');
+    
+    if (isPalindrome(inputString)) {
+        resultElement.textContent = "The string is a palindrome.";
+    } else {
+        resultElement.textContent = "The string is not a palindrome.";
+    }
+}
+
+
+//,,,,,,
+function isPalindrome(str) {
+    // Convert the string to lowercase to make the comparison case-insensitive
+    str = str.toLowerCase();
+    
+    // Remove non-alphanumeric characters from the string using regex
+    str = str.replace(/[^a-z0-9]/g, '');
+    
+    // Check if the string is a palindrome
+    for (let i = 0; i < Math.floor(str.length / 2); i++) {
+        if (str[i] !== str[str.length - 1 - i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
+
+
+
+function findMinMax() {
+    var input = document.getElementById('numbers').value;
+    var numbers = input.split(',').map(Number);
+
+    if (numbers.some(isNaN)) {
+        document.getElementById('result').innerText = 'Please enter valid numbers separated by commas.';
+        return;
+    }
+
+    var min = Math.min(...numbers);
+    var max = Math.max(...numbers);
+
+    document.getElementById('result').innerText = 'Minimum: ' + min + ', Maximum: ' + max;
+}
+
+
+
+
+
+//,,,
+
+function findMissingNumber(arr) {
+        let n = arr.length + 1;
+        let totalSum = (n * (n + 1)) / 2;
+        let sum = arr.reduce((acc, curr) => acc + curr, 0);
+        return totalSum - sum;
+    }
+
+    // Test the function
+    let series = [11, 12, 14, 15, 16, 18, 19, 20];
+    let missingNumber = findMissingNumber(series);
+    document.getElementById('missingNumber').textContent = missingNumber;
+
+//     function findMissingNumber(arr) {
+//     let n = arr.length + 1;
+//     let totalSum = (n * (n + 1)) / 2;
+//     let sum = arr.reduce((acc, curr) => acc + curr, 0);
+//     return totalSum - sum;
+// }
+
+// // Test the function
+// let series = [11, 12, 14, 15, 16, 18, 19, 20];
+// console.log("The missing number is:", findMissingNumber(series));
+
+
+</script>
+</body>
+</html>
